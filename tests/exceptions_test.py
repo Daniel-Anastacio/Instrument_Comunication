@@ -1,14 +1,11 @@
-import serial, pytest, random
-from instrument.instrument import Instrument
+import random
+
+import pytest
+from instrument.exceptions import TemperatureError, VoltageError, temperature_exception, voltage_exception
+from tests import arduino, notebook
 from usecases.communication import communication
 from usecases.watching_temperature import watching_temperature
-from instrument.exceptions import temperature_exception, TemperatureError, voltage_exception, VoltageError
 from usecases.watching_voltage import watching_voltage
-
-com1 = serial.Serial("COM1", 9600, timeout=5)
-com2 = serial.Serial("COM2", 9600, timeout=5)
-notebook = Instrument("Lenovo Ideapad S145", com1)
-arduino = Instrument("Arduino UNO R3", com2)
 
 
 def test_temperature_exception():
